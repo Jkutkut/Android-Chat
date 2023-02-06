@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Android-Chat</string>
+    <string name="etxt_msg_hint">Enter the message:</string>
+    <string name="btn_send_text">Send</string>
+    <string name="exit_confirmation_msg">Are you sure you want to exit?</string>
+    <string name="exit_confirmation_positive">Yes</string>
+    <string name="exit_confirmation_negative">Nope</string>
+    <string name="exit">Exit</string>
+    <string name="logout">Log out</string>
+    <string name="etxt_email_hint">Email:</string>
+    <string name="etxt_password_hint">Password:</string>
+    <string name="btn_login_text">Log in</string>
+    <string name="txtv_login">Log in:</string>
 </resources>

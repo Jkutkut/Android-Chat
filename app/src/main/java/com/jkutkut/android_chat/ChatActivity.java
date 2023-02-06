@@ -1,12 +1,15 @@
 package com.jkutkut.android_chat;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -17,14 +20,19 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.jkutkut.android_chat.model.Msg;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity {
+
+    public static final String USER_KEY = "user";
 
     private MsgAdapter adapter;
 
     private ArrayList<Msg> msgs;
+    private String user;
 
     private DatabaseReference msgDBRef;
     private ChildEventListener msgChildListener;
@@ -35,12 +43,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_chat);
+
+        msgs = new ArrayList<>();
+        user = getIntent().getStringExtra(USER_KEY);
 
         etxtMsg = findViewById(R.id.etxtMsg);
         Button btnSend = findViewById(R.id.btnSend);
 
-        msgs = new ArrayList<>();
 
         RecyclerView rvMsgs = findViewById(R.id.rvMsgs);
         adapter = new MsgAdapter(msgs);
@@ -59,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendMsg() {
-        final String user = "user"; // TODO
         String msg = etxtMsg.getText().toString().trim();
         System.out.println("msg = " + msg);
         if (!msg.isEmpty()) {
@@ -123,6 +132,44 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         msgDBRef.addChildEventListener(msgChildListener);
+    }
+
+    // *************** Options menu ***************
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.chat_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NotNull MenuItem item) {
+        if (item.getItemId() == R.id.mnExit) {
+            this.confirmExit();
+            return true;
+        }
+        else {
+            // TODO logout
+            return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private void confirmExit() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getText(R.string.exit_confirmation_msg));
+        builder.setPositiveButton(
+                R.string.exit_confirmation_positive,
+                (dialog, which) -> {
+                    // TODO
+                    finish();
+                }
+        );
+        builder.setNegativeButton(
+                R.string.exit_confirmation_negative,
+                (dialog, which) -> dialog.cancel()
+        );
+        AlertDialog ad = builder.create();
+        ad.setCanceledOnTouchOutside(true);
+        ad.show();
     }
 
 }

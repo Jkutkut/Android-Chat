@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class ChatActivity extends AppCompatActivity {
+    public static final int RESULT_EXIT = 0;
+    public static final int RESULT_LOGOUT = 1;
 
     public static final String USER_KEY = "user";
 
@@ -148,7 +150,7 @@ public class ChatActivity extends AppCompatActivity {
             return true;
         }
         else {
-            // TODO logout
+            this.confirmLogout();
             return super.onOptionsItemSelected(item);
         }
     }
@@ -159,7 +161,7 @@ public class ChatActivity extends AppCompatActivity {
         builder.setPositiveButton(
                 R.string.exit_confirmation_positive,
                 (dialog, which) -> {
-                    // TODO
+                    setResult(RESULT_EXIT);
                     finish();
                 }
         );
@@ -172,4 +174,22 @@ public class ChatActivity extends AppCompatActivity {
         ad.show();
     }
 
+    private void confirmLogout() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getText(R.string.logout_confirmation_msg));
+        builder.setPositiveButton(
+                R.string.exit_confirmation_positive,
+                (dialog, which) -> {
+                    setResult(RESULT_LOGOUT);
+                    finish();
+                }
+        );
+        builder.setNegativeButton(
+                R.string.exit_confirmation_negative,
+                (dialog, which) -> dialog.cancel()
+        );
+        AlertDialog ad = builder.create();
+        ad.setCanceledOnTouchOutside(true);
+        ad.show();
+    }
 }

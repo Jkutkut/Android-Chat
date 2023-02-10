@@ -13,4 +13,7 @@
     <string name="txtv_login">Log in:</string>
     <string name="logout_confirmation_msg">Are you sure you want to log out?</string>
     <string name="todo">TODO</string>
+    <string name="email_empty">User can not be empty</string>
+    <string name="password_empty">Password can not be empty</string>
+    <string name="login_failed">Authentication failed.</string>
 </resources>

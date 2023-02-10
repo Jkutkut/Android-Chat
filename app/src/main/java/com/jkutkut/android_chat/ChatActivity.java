@@ -20,8 +20,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -174,14 +172,16 @@ public class ChatActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, String s) {
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                 Msg m = dataSnapshot.getValue(Msg.class);
                 assert m != null;
-                m.setMsg("El mensaje ha sido eliminado");
+                m.setSender("System");
+                m.setMsg("Msg removed"); // TODO - Export to XML
+                m.setPhotoUrl(null);
                 int pos = -1;
                 for (int i = 0; i < msgs.size(); i++) {
                     if (m.getId().equals(msgs.get(i).getId())) {
@@ -194,11 +194,11 @@ public class ChatActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, String s) {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         };
         msgDBRef.addChildEventListener(msgChildListener);

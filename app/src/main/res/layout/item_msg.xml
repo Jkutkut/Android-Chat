@@ -17,7 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sender"
-        android:textSize="12dp"
+        android:textSize="12sp"
+        android:textStyle="bold"
         android:id="@+id/txtSender"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
@@ -29,7 +30,8 @@
         app:layout_constraintTop_toBottomOf="@id/txtSender"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:adjustViewBounds="true"/>
+        android:adjustViewBounds="true"
+        android:layout_margin="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +39,7 @@
         android:id="@+id/txtMsg"
         app:layout_constraintTop_toBottomOf="@id/imgvMsg"
         app:layout_constraintStart_toStartOf="parent"
-        android:textSize="12dp"
-        android:text="fjasdlkjfklasdjf klajsklf jlaskdjf klasjd klfjaskdl fjklaj klfjaklsd fjklajfklajsdkl"/>
+        android:textSize="12sp"
+        android:text="@string/todo"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,21 +16,34 @@
         android:id="@+id/rvMsgs"
         android:layout_weight="49"/>
 
+    <ImageView
+        android:id="@+id/imgvPreview"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/ic_launcher"/>
     <LinearLayout
         android:id="@+id/send_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_weight="1"
-        android:weightSum="10">
+        android:weightSum="15">
         <EditText
             android:id="@+id/etxtMsg"
             android:inputType="textMultiLine"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="9"
+            android:layout_weight="13"
             android:autofillHints="none"
             android:hint="@string/etxt_msg_hint"/>
+        <ImageButton
+            android:id="@+id/btnPhoto"
+            android:layout_width="42dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ic_launcher_foreground"
+            android:contentDescription="@string/todo" />
         <Button
             android:id="@+id/btnSend"
             android:layout_width="wrap_content"

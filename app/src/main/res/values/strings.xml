@@ -12,4 +12,5 @@
     <string name="btn_login_text">Log in</string>
     <string name="txtv_login">Log in:</string>
     <string name="logout_confirmation_msg">Are you sure you want to log out?</string>
+    <string name="todo">TODO</string>
 </resources>

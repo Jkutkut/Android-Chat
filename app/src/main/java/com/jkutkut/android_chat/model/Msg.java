@@ -4,13 +4,15 @@ public class Msg {
     private String id;
     private String msg;
     private String sender;
+    private String photoUrl;
 
     public Msg() {}
 
-    public Msg(String id, String msg, String sender) {
+    public Msg(String id, String msg, String sender, String photoUrl) {
         this.id = id;
         this.msg = msg;
         this.sender = sender;
+        this.photoUrl = photoUrl;
     }
 
     // GETTERS
@@ -26,6 +28,10 @@ public class Msg {
         return sender;
     }
 
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
     // SETTERS
     public void setId(String id) {
         this.id = id;
@@ -37,5 +43,9 @@ public class Msg {
 
     public void setSender(String sender) {
         this.sender = sender;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

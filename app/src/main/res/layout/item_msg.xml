@@ -22,13 +22,22 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 
+    <ImageView
+        android:id="@+id/imgvMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/txtSender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:adjustViewBounds="true"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txtMsg"
-        android:textSize="12dp"
-        app:layout_constraintTop_toBottomOf="@id/txtSender"
+        app:layout_constraintTop_toBottomOf="@id/imgvMsg"
         app:layout_constraintStart_toStartOf="parent"
+        android:textSize="12dp"
         android:text="fjasdlkjfklasdjf klajsklf jlaskdjf klasjd klfjaskdl fjklaj klfjaklsd fjklajfklajsdkl"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
